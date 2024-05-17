@@ -1,0 +1,1 @@
+CREATE DATABASE bookify_production;
