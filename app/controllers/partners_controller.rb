@@ -20,7 +20,7 @@ class PartnersController < ApplicationController
     @partner = Partner.new(partner_params)
 
     if @partner.save
-      redirect_to @partner, notice: 'Partner was successfully created.'
+      redirect_to @partner, notice: 'Partner was successfully created.', status: :ok
     else
       render :new
     end
@@ -28,18 +28,16 @@ class PartnersController < ApplicationController
 
   def update
     if @partner.update(partner_params)
-      redirect_to @partner, notice: 'Partner was successfully updated.'
+      redirect_to @partner, notice: 'Partner was successfully updated.', status: :no_content
     else
       render :edit
     end
   end
 
   def destroy
-    @partner.destroy!
-
-    respond_to do |format|
-      format.html { redirect_to partners_url, notice: "Partner was successfully destroyed." }
-    end
+    @partner = Partner.find(params[:id])
+    @partner.destroy
+    redirect_to partners_url, status: :see_other
   end
 
   private
