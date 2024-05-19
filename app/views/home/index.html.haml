@@ -1,0 +1,16 @@
+- if user_signed_in?
+  %h1 Welcome to the Homepage
+  %p Logged in as #{current_user.email}
+
+  %h3 Menu:
+  %ul
+    %li= link_to 'Account', edit_user_registration_path
+    %li= link_to 'Partners', partners_path
+    %li= link_to 'Logout', destroy_user_session_path, method: :delete, data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to logout?" }
+- else
+  %h1 Welcome!
+  %h2 Sign up or Login with an existing account
+  %p
+    = link_to 'Login', new_user_session_path
+    |
+    = link_to 'Sign Up', new_user_registration_path
