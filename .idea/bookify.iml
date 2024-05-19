@@ -57,6 +57,10 @@
     <orderEntry type="library" scope="PROVIDED" name="drb (v2.2.1, rbenv: 3.1.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="error_highlight (v0.6.0, rbenv: 3.1.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="erubi (v1.12.0, rbenv: 3.1.4) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="event_stream_parser (v1.0.0, rbenv: 3.1.4) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="faraday (v2.9.0, rbenv: 3.1.4) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="faraday-multipart (v1.0.4, rbenv: 3.1.4) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="faraday-net_http (v3.1.0, rbenv: 3.1.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="globalid (v1.2.1, rbenv: 3.1.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="haml (v6.3.0, rbenv: 3.1.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="i18n (v1.14.5, rbenv: 3.1.4) [gem]" level="application" />
@@ -71,7 +75,9 @@
     <orderEntry type="library" scope="PROVIDED" name="mini_mime (v1.1.5, rbenv: 3.1.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="minitest (v5.23.0, rbenv: 3.1.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="msgpack (v1.7.2, rbenv: 3.1.4) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="multipart-post (v2.4.1, rbenv: 3.1.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="mutex_m (v0.2.0, rbenv: 3.1.4) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="net-http (v0.4.1, rbenv: 3.1.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="net-imap (v0.4.11, rbenv: 3.1.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="net-pop (v0.1.2, rbenv: 3.1.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="net-protocol (v0.2.2, rbenv: 3.1.4) [gem]" level="application" />
@@ -98,6 +104,7 @@
     <orderEntry type="library" scope="PROVIDED" name="reline (v0.5.7, rbenv: 3.1.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="responders (v3.1.1, rbenv: 3.1.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rexml (v3.2.8, rbenv: 3.1.4) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="ruby-openai (v7.0.1, rbenv: 3.1.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rubyzip (v2.3.2, rbenv: 3.1.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="selenium-webdriver (v4.21.1, rbenv: 3.1.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sprockets (v4.2.1, rbenv: 3.1.4) [gem]" level="application" />
@@ -111,6 +118,7 @@
     <orderEntry type="library" scope="PROVIDED" name="timeout (v0.4.1, rbenv: 3.1.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="turbo-rails (v2.0.5, rbenv: 3.1.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="tzinfo (v2.0.6, rbenv: 3.1.4) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="uri (v0.13.0, rbenv: 3.1.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="warden (v1.2.9, rbenv: 3.1.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="web-console (v4.2.1, rbenv: 3.1.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="webrick (v1.8.1, rbenv: 3.1.4) [gem]" level="application" />
