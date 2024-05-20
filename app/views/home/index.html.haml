@@ -5,6 +5,7 @@
   %h3 Menu:
   %ul
     %li= link_to 'Account', edit_user_registration_path
+    %li= link_to 'My Bookings', bookings_path
     %li= link_to 'Partners', partners_path
     %li= link_to 'Logout', destroy_user_session_path, method: :delete, data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to logout?" }
 - else

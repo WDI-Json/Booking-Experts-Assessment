@@ -1,0 +1,16 @@
+%h1= "Booking ##{@booking.id}"
+
+%p
+  %strong Date of Stay:
+  = @booking.date_of_stay
+
+%p
+  %strong Amount of Days:
+  = @booking.amount_of_days
+
+%p
+  %strong Staying at our Partner:
+  = @booking.partner.name
+
+= link_to 'Edit', edit_booking_path(@booking)
+= link_to 'Back', bookings_path
