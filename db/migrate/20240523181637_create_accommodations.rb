@@ -4,8 +4,6 @@ class CreateAccommodations < ActiveRecord::Migration[7.1]
       t.string :name
       t.integer :sleeping_spots
       t.decimal :cost_per_night
-      t.date :start_date
-      t.date :end_date
       t.references :partner, null: false, foreign_key: true
 
       t.timestamps

@@ -25,6 +25,10 @@ class BookingsController < ApplicationController
   # POST /bookings or /bookings.json
   def create
     @booking = current_user.bookings.build(booking_params)
+    partner = Partner.find(booking_params[:partner_id])
+    @accommodation = partner.accommodations.first if partner.accommodations.any?
+
+    @booking.accommodation_id = @accommodation.id if @accommodation
 
     if @booking.save
       redirect_to @booking, notice: 'Booking was successfully created.'

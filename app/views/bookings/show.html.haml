@@ -12,5 +12,14 @@
   %strong Staying at our Partner:
   = @booking.partner.name
 
+%p
+  %strong Accommodation Details:
+  %br
+  %p= @booking.accommodation.name
+  %br
+  %strong Total:
+  €
+  = @booking.accommodation.cost_per_night * @booking.amount_of_days
+
 = link_to 'Edit', edit_booking_path(@booking)
 = link_to 'Back', bookings_path

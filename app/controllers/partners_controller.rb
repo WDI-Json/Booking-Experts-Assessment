@@ -47,6 +47,10 @@ class PartnersController < ApplicationController
   end
 
   def partner_params
-    params.require(:partner).permit(:name, :location)
+    params
+      .require(:partner)
+      .permit(:name, :location,
+              accommodations_attributes:
+                [:id, :name, :sleeping_spots, :cost_per_night, :_destroy])
   end
 end

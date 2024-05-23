@@ -2,5 +2,21 @@
 %p
   Location:
   = @partner.location
+
+%h2 Accommodations
+%table
+  %thead
+    %tr
+      %th Name
+      %th Sleeping Spots
+      %th Cost per Night
+  %tbody
+    - @partner.accommodations.each do |accommodation|
+      %tr
+        %td= accommodation.name
+        %td= accommodation.sleeping_spots
+        %td= accommodation.cost_per_night
+
 = link_to 'Edit', edit_partner_path(@partner)
+|
 = link_to 'Back', partners_path

@@ -4,7 +4,6 @@
   - if @partner.errors.any?
     #error_explanation
       %h2= pluralize(@partner.errors.count, "error") + " prohibited this partner from being saved:"
-
       %ul
         - @partner.errors.full_messages.each do |message|
           %li= message
@@ -15,6 +14,16 @@
   %div
     = form.label :location
     = form.text_field :location
+
+  %h2 Accommodation
+  #accommodations
+    = form.fields_for :accommodations, @partner.accommodations.build do |accommodation_fields|
+      = render 'accommodation_fields', accommodation_fields: accommodation_fields
+
+  -# TODO: make this work so multiple new accommodation can be added
+  -# %div
+  -#   = link_to 'Add Accommodation', '#', id: 'add_accommodation', class: 'button'
+
   %div
     = form.submit "Create Partner"
 

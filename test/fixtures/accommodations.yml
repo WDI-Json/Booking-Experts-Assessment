@@ -4,14 +4,10 @@ one:
   name: MyString
   sleeping_spots: 1
   cost_per_night: 9.99
-  start_date: 2024-05-23
-  end_date: 2024-05-23
   partner: one
 
 two:
   name: MyString
   sleeping_spots: 1
   cost_per_night: 9.99
-  start_date: 2024-05-23
-  end_date: 2024-05-23
   partner: two

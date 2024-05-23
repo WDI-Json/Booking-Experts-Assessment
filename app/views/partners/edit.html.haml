@@ -1,10 +1,9 @@
-%h1= action_name.capitalize + " Partner"
+%h1 Edit Partner
 
 = form_with(model: @partner, local: true) do |form|
   - if @partner.errors.any?
     #error_explanation
       %h2= pluralize(@partner.errors.count, "error") + " prohibited this partner from being saved:"
-
       %ul
         - @partner.errors.full_messages.each do |message|
           %li= message
@@ -15,7 +14,17 @@
   %div
     = form.label :location
     = form.text_field :location
+
+  %h2 Accommodation
+  #accommodations
+    = form.fields_for :accommodations do |accommodation_fields|
+      = render 'accommodation_fields', accommodation_fields: accommodation_fields
+
+  -# TODO: make this work so multiple new accommodation can be added
+  -# %div
+  -#   = link_to 'Add Accommodation', '#', id: 'add_accommodation', class: 'button'
+
   %div
-    = form.submit
+    = form.submit "Update Partner"
 
 = link_to 'Back', partners_path
