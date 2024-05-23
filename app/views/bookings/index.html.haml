@@ -18,4 +18,4 @@
         %td= booking.partner.name
         %td= link_to 'Show', booking
         %td= link_to 'Edit', edit_booking_path(booking)
-        %td= link_to 'Destroy', booking, data: { turbo_method: :delete, turbo_confirm:  'Are you sure?' }
+        %td= link_to 'PDF', booking, data: { turbo_method: :delete, turbo_confirm:  'Are you sure?' }

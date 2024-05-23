@@ -10,9 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_19_115906) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_23_183227) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "accommodations", force: :cascade do |t|
+    t.string "name"
+    t.integer "sleeping_spots"
+    t.decimal "cost_per_night"
+    t.date "start_date"
+    t.date "end_date"
+    t.bigint "partner_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["partner_id"], name: "index_accommodations_on_partner_id"
+  end
 
   create_table "bookings", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -21,8 +33,19 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_19_115906) do
     t.integer "amount_of_days"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "accommodation_id", null: false
+    t.index ["accommodation_id"], name: "index_bookings_on_accommodation_id"
     t.index ["partner_id"], name: "index_bookings_on_partner_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
+
+  create_table "invoices", force: :cascade do |t|
+    t.bigint "booking_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["booking_id"], name: "index_invoices_on_booking_id"
+    t.index ["user_id"], name: "index_invoices_on_user_id"
   end
 
   create_table "partners", force: :cascade do |t|
@@ -40,10 +63,16 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_19_115906) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "isAdmin"
+    t.string "name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "accommodations", "partners"
+  add_foreign_key "bookings", "accommodations"
   add_foreign_key "bookings", "partners"
   add_foreign_key "bookings", "users"
+  add_foreign_key "invoices", "bookings"
+  add_foreign_key "invoices", "users"
 end
