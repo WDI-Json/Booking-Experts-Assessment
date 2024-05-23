@@ -1,16 +1,10 @@
-%nav.navbar
+%nav
   .container
-    %a.navbar-brand{ href: root_path } Bookify
+    = link_to "Bookify", root_path
     %ul.nav
-      %li.nav-item
-        %a.nav-link{ href: root_path } Home
-      %li.nav-item
-        %a.nav-link{ href: partners_path } Partners
       - if user_signed_in?
-        %li.nav-item
-          %a.nav-link{ href: destroy_user_session_path, method: :delete } Logout
+        %li= link_to "Logout", destroy_user_session_path, method: :delete
+        %li= link_to "Partners", partners_path
       - else
-        %li.nav-item
-          %a.nav-link{ href: new_user_session_path } Login
-        %li.nav-item
-          %a.nav-link{ href: new_user_registration_path } Sign Up
+        %li= link_to "Login", new_user_session_path
+        %li= link_to "Sign Up", new_user_registration_path

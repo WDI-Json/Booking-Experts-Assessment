@@ -4,7 +4,9 @@
       &copy; #{Date.today.year} Bookify. All rights reserved.
     %nav
       %ul.nav{ style: "list-style: none; padding: 0;" }
+        -#   TODO: add contactpage
         %li.nav-item
-          %a.nav-link{ href: root_path } About Us
+          = link_to "Contact", root_path,  class: 'nav-link'
+        -#   TODO: add About page
         %li.nav-item
-          %a.nav-link{ href: root_path } Contact
+          = link_to "About", root_path, class: 'nav-link'
