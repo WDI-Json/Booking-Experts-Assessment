@@ -54,6 +54,24 @@ class BookingsController < ApplicationController
     redirect_to bookings_url, notice: 'Booking was successfully destroyed.'
   end
 
+  def generate_pdf
+    InvoicePdf.generate(@booking)
+    invoice_name = @booking.date_of_stay.strftime("%d-%m-%Y") +"_invoice.pdf"
+    filename = File.join(Rails.root, "app/invoice", invoice_name)
+    pdf.render_file filename
+    send_data pdf.render, filename: invoice_name, type: 'application/pdf', disposition: 'inline'
+
+    # respond_to do |format|
+    #   format.pdf do
+    #     pdf = InvoicePdf.new(@booking)
+    #     invoice_name = @booking.date_of_stay.strftime("%d-%m-%Y") +"_invoice.pdf"
+    #     filename = File.join(Rails.root, "app/invoice", invoice_name)
+    #     pdf.render_file filename
+    #     send_data pdf.render, filename: invoice_name, type: 'application/pdf', disposition: 'inline'
+    #   end
+    # end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_booking
