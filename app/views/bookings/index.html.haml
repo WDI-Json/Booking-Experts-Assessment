@@ -18,5 +18,5 @@
         %td= booking.partner.name
         %td= link_to 'Show', booking
         %td= link_to 'Edit', edit_booking_path(booking)
-        %td= link_to 'Invoice', booking_generate_pdf_path(booking)
+        %td= link_to 'Invoice', booking_get_invoice_path(booking)
         %td= link_to 'Delete', booking, data: { turbo_method: :delete, turbo_confirm:  'Are you sure?' }

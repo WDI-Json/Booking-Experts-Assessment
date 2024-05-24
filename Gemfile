@@ -72,3 +72,5 @@ gem "devise", "~> 4.9"
 gem "haml"
 gem "ruby-openai"
 gem 'prawn'
+gem "prawn-table", "~> 0.2.2"
+gem 'actionview'

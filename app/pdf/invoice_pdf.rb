@@ -1,122 +1,151 @@
 class InvoicePdf < Prawn::Document
-  Prawn::Document.generate("invoice.pdf") do |pdf|
+  # def initialize
+  #   super()
+  # end
+
+  def generate_invoice(booking)
     logopath = 'app/assets/images/bookify-logo.png'
-    initial_y = pdf.cursor
-    initialmove_y = 5
     address_x = 35
     invoice_header_x = 325
     lineheight_y = 12
     font_size = 9
+    move_down 5
 
-    pdf.move_down initialmove_y
-
+    amount_due = "€#{'%.2f' % (booking.accommodation.cost_per_night * booking.amount_of_days)}"
+    cost_per_night = "€#{'%.2f' % booking.accommodation.cost_per_night}"
     # Add the font style and size
-    pdf.font "Helvetica"
-    pdf.font_size font_size
+    font "Helvetica"
+    font_size font_size
 
-    #start with EON Media Group
-    pdf.text_box "Your Business Name", :at => [address_x,  pdf.cursor]
-    pdf.move_down lineheight_y
-    pdf.text_box "1234 Some Street Suite 1703", :at => [address_x,  pdf.cursor]
-    pdf.move_down lineheight_y
-    pdf.text_box "Some City, ST 12345", :at => [address_x,  pdf.cursor]
-    pdf.move_down lineheight_y
+    # Business address
+    text_box "Bookify", at: [address_x, cursor]
+    move_down lineheight_y
+    text_box "Regelandisstraat 17", at: [address_x, cursor]
+    move_down lineheight_y
+    text_box "Zwolle, 8022BN", at: [address_x, cursor]
+    move_down lineheight_y
 
-    last_measured_y = pdf.cursor
-    pdf.move_cursor_to pdf.bounds.height
+    last_measured_y = cursor
+    move_cursor_to bounds.height
 
-    pdf.image logopath, :width => 215, :position => :right
+    image logopath, width: 128, position: :right
 
-    pdf.move_cursor_to last_measured_y
+    move_cursor_to last_measured_y
 
-    # client address
-    pdf.move_down 65
-    last_measured_y = pdf.cursor
+    # Client address
+    move_down 65
+    last_measured_y = cursor
 
-    pdf.text_box "Client Business Name", :at => [address_x,  pdf.cursor]
-    pdf.move_down lineheight_y
-    pdf.text_box "Client Contact Name", :at => [address_x,  pdf.cursor]
-    pdf.move_down lineheight_y
-    pdf.text_box "4321 Some Street Suite 1000", :at => [address_x,  pdf.cursor]
-    pdf.move_down lineheight_y
-    pdf.text_box "Some City, ST 12345", :at => [address_x,  pdf.cursor]
+    text_box "Invoice for", at: [address_x, cursor]
+    move_down lineheight_y
+    text_box booking.user.email, at: [address_x, cursor]
+    move_down lineheight_y
+    #TODO: add extra fields to user
+    # text_box "4321 Some Street Suite 1000", at: [address_x, cursor]
+    # move_down lineheight_y
+    # text_box "Some City, ST 12345", at: [address_x, cursor]
 
-    pdf.move_cursor_to last_measured_y
+    text_box "At partner", at: [address_x, cursor]
+    move_down lineheight_y
+    text_box booking.partner.name + " (" + booking.partner.location + ")", at: [address_x, cursor]
+    move_down lineheight_y
 
+    move_cursor_to last_measured_y
+
+    # Invoice header
     invoice_header_data = [
-      ["Invoice #", "001"],
-      ["Invoice Date", "December 1, 2011"],
-      ["Amount Due", "$3,200.00 USD"]
+      ["Invoice #", "#{booking.created_at.strftime("%Y%m")}%03d" %booking.id],
+      ["Invoice Date", booking.created_at.strftime("%Y-%m-%d")],
+      # TODO: Find out why number_to_currency does not work and fix it
+      ["Amount Due", amount_due ]
     ]
 
-    pdf.table(invoice_header_data, :position => invoice_header_x, :width => 215) do
-      style(row(0..1).columns(0..1), :padding => [1, 5, 1, 5], :borders => [])
-      style(row(2), :background_color => 'e9e9e9', :border_color => 'dddddd', :font_style => :bold)
-      style(column(1), :align => :right)
-      style(row(2).columns(0), :borders => [:top, :left, :bottom])
-      style(row(2).columns(1), :borders => [:top, :right, :bottom])
+    table(invoice_header_data, position: invoice_header_x, width: 215) do
+      cells.padding = [1, 5, 1, 5]
+      cells.borders = []
+      row(2).background_color = 'e9e9e9'
+      row(2).border_color = 'dddddd'
+      row(2).font_style = :bold
+      column(1).align = :right
+      row(2).columns(0).borders = [:top, :left, :bottom]
+      row(2).columns(1).borders = [:top, :right, :bottom]
     end
 
-    pdf.move_down 45
+    move_down 45
 
+    # Invoice services
     invoice_services_data = [
       ["Item", "Description", "Unit Cost", "Quantity", "Line Total"],
-      ["Service Name", "Service Description", "320.00", "10", "$3,200.00"],
-      [" ", " ", " ", " ", " "]
+      ["Accommodation", booking.accommodation.name, cost_per_night, booking.amount_of_days, amount_due],
+      ["VOUCHER: CLEAN2024", "Cleaning", "€0.00", "1", "€0.00"]
     ]
 
-    pdf.table(invoice_services_data, :width => pdf.bounds.width) do
-      style(row(1..-1).columns(0..-1), :padding => [4, 5, 4, 5], :borders => [:bottom], :border_color => 'dddddd')
-      style(row(0), :background_color => 'e9e9e9', :border_color => 'dddddd', :font_style => :bold)
-      style(row(0).columns(0..-1), :borders => [:top, :bottom])
-      style(row(0).columns(0), :borders => [:top, :left, :bottom])
-      style(row(0).columns(-1), :borders => [:top, :right, :bottom])
-      style(row(-1), :border_width => 2)
-      style(column(2..-1), :align => :right)
-      style(columns(0), :width => 75)
-      style(columns(1), :width => 275)
+    table(invoice_services_data, width: bounds.width) do
+      cells.padding = [4, 5, 4, 5]
+      row(0).background_color = 'e9e9e9'
+      row(0).border_color = 'dddddd'
+      row(0).font_style = :bold
+      row(0).borders = [:top, :bottom]
+      row(0).columns(0).borders = [:top, :left, :bottom]
+      row(0).columns(-1).borders = [:top, :right, :bottom]
+      row(-1).border_width = 2
+      columns(2..-1).align = :right
+      columns(0).width = 75
+      columns(1).width = 275
     end
 
-    pdf.move_down 1
+    move_down 1
 
+    # Invoice totals
     invoice_services_totals_data = [
-      ["Total", "$3,200.00"],
-      ["Amount Paid", "-0.00"],
-      ["Amount Due", "$3,200.00 USD"]
+      ["Total", amount_due],
+      ["Amount Paid", "€0.00"],
+      ["Amount Due", amount_due]
     ]
 
-    pdf.table(invoice_services_totals_data, :position => invoice_header_x, :width => 215) do
-      style(row(0..1).columns(0..1), :padding => [1, 5, 1, 5], :borders => [])
-      style(row(0), :font_style => :bold)
-      style(row(2), :background_color => 'e9e9e9', :border_color => 'dddddd', :font_style => :bold)
-      style(column(1), :align => :right)
-      style(row(2).columns(0), :borders => [:top, :left, :bottom])
-      style(row(2).columns(1), :borders => [:top, :right, :bottom])
+    table(invoice_services_totals_data, position: invoice_header_x, width: 215) do
+      cells.padding = [1, 5, 1, 5]
+      cells.borders = []
+      row(0).font_style = :bold
+      row(2).background_color = 'e9e9e9'
+      row(2).border_color = 'dddddd'
+      row(2).font_style = :bold
+      column(1).align = :right
+      row(2).columns(0).borders = [:top, :left, :bottom]
+      row(2).columns(1).borders = [:top, :right, :bottom]
     end
 
-    pdf.move_down 25
+    move_down 25
 
+    # Terms
     invoice_terms_data = [
       ["Terms"],
-      ["Payable upon receipt"]
+      ["All payments are due upon receipt of the invoice."],
+      [" "],
+      ["Cancellations made less than 7 days before the check-in date are non-refundable."]
     ]
 
-    pdf.table(invoice_terms_data, :width => 275) do
-      style(row(0..-1).columns(0..-1), :padding => [1, 0, 1, 0], :borders => [])
-      style(row(0).columns(0), :font_style => :bold)
+    table(invoice_terms_data, width: 275) do
+      cells.padding = [1, 0, 1, 0]
+      cells.borders = []
+      row(0).font_style = :bold
     end
 
-    pdf.move_down 15
+    move_down 15
 
+    # Notes
     invoice_notes_data = [
       ["Notes"],
-      ["Thank you for doing business with Your Business Name"]
+      ["Thank you for choosing for Bookify!"]
     ]
 
-    pdf.table(invoice_notes_data, :width => 275) do
-      style(row(0..-1).columns(0..-1), :padding => [1, 0, 1, 0], :borders => [])
-      style(row(0).columns(0), :font_style => :bold)
+    table(invoice_notes_data, width: 275) do
+      cells.padding = [1, 0, 1, 0]
+      cells.borders = []
+      row(0).font_style = :bold
     end
-
   end
 end
+
+# To generate the PDF
+InvoicePdf.new.render_file "invoice.pdf"

@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :partners
   resources :bookings do
     resource :invoice, only: [:new, :create]
-    get 'generate_pdf', to: 'bookings#generate_pdf', as: :generate_pdf
+    get 'get_invoice', to: 'bookings#get_invoice', as: :get_invoice
   end
 
   # Authentication
