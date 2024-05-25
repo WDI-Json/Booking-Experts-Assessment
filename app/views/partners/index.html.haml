@@ -1,12 +1,18 @@
 %h1 Partners
 = link_to 'New Partner', new_partner_path
-%ul
-  - @partners.each do |partner|
-    %li
-      = link_to partner.name, partner_path(partner)
-      |
-      = partner.location
-      |
-      = link_to 'Edit', edit_partner_path(partner)
-      |
-      = link_to 'Destroy', partner_path(partner), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }
+%table
+  %thead
+    %tr
+      %th Partner
+      %th Location
+      %th 
+      %th{ colspan: 4 }
+  %tbody
+    - @partners.each do |partner|
+      %tr
+        %td= link_to partner.name, partner_path(partner)
+        %td= partner.location
+        %td= link_to 'Edit', edit_partner_path(partner)
+        %td= link_to 'Destroy', partner_path(partner), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }
+
+      
