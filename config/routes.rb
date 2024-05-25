@@ -11,5 +11,7 @@ Rails.application.routes.draw do
   # Routes
   get "up" => "rails/health#show", as: :rails_health_check
 
+  get '/about', to: 'static_pages#about'
+  get '/contact', to: 'static_pages#contact'
   root "home#index"
 end

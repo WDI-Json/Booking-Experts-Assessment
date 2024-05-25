@@ -1,19 +1,20 @@
 %h1 New Partner
 
 = form_with(model: @partner, local: true) do |form|
-  - if @partner.errors.any?
-    #error_explanation
-      %h2= pluralize(@partner.errors.count, "error") + " prohibited this partner from being saved:"
-      %ul
-        - @partner.errors.full_messages.each do |message|
-          %li= message
+  .space-y-4
+    - if @partner.errors.any?
+      #error_explanation
+        %h2= pluralize(@partner.errors.count, "error") + " prohibited this partner from being saved:"
+        %ul
+          - @partner.errors.full_messages.each do |message|
+            %li= message
 
-  %div
-    = form.label :name
-    = form.text_field :name
-  %div
-    = form.label :location
-    = form.text_field :location
+    %div
+      = form.label :name
+      = form.text_field :name
+    %div
+      = form.label :location
+      = form.text_field :location
 
   %h2 Accommodation
   #accommodations
@@ -24,7 +25,6 @@
   -# %div
   -#   = link_to 'Add Accommodation', '#', id: 'add_accommodation', class: 'button'
 
-  %div
+  .mt-6.flex.items-center.gap-4
+    = link_to 'Back', partners_path
     = form.submit "Create Partner"
-
-= link_to 'Back', partners_path

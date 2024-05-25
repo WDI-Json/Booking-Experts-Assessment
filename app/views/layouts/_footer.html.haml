@@ -1,12 +1,12 @@
-%footer.footer
+%footer.page-footer.text-center
   .container
-    %p
-      &copy; #{Date.today.year} Bookify. All rights reserved.
     %nav
       %ul.nav{ style: "list-style: none; padding: 0;" }
         -#   TODO: add contactpage
         %li.nav-item
-          = link_to "Contact", root_path,  class: 'nav-link'
+          = link_to "Contact", contact_path,  class: 'nav-link'
         -#   TODO: add About page
         %li.nav-item
-          = link_to "About", root_path, class: 'nav-link'
+          = link_to "About", about_path, class: 'nav-link'
+  .mt-4
+    %small &copy; #{Date.today.year} Bookify. All rights reserved.

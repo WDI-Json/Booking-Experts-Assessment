@@ -1,16 +1,20 @@
 - if user_signed_in?
   %body
-  .hero
+  .py-6.md:py-12.bg-primary.text-on-primary
     .container
-      %h1 Welcome to Bookify #{current_user.email}!
-      %p Simplify your booking process through our platform
+      %hgroup
+        %h1.break-words Bookify
+        %p Simplify your booking process through our platform
+
+      %p.text-lg Welcome #{current_user.email}!
       %a= link_to "Book Now", bookings_path
 
   .ai-tool
     .container
       %h2 Discover Exciting Activities with Our AI Tool
       %p Let our AI suggest activities for you to enjoy once booked!
-      %a.cta-btn{href: "#"} Try Our AI Tool
+      %a.btn.-primary{href: "#"} Try Our AI Tool
+
 - else
   %h1 Welcome!
   %h2 Sign up or Login with an existing account

@@ -1,7 +1,7 @@
-%h1 Editing Booking
+.flex.md:flex-row.gap-2.md:justify-between.items-center
+    %h1 Editing Booking
+    = link_to 'View Booking', @booking, class: "btn"
 
 = render 'form', booking: @booking
 
-= link_to 'Show', @booking
 
-= link_to 'Back', bookings_path

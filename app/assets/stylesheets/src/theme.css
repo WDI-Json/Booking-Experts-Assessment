@@ -1,0 +1,61 @@
+:root {
+  --brand: hsl(150 89% 31%);
+  --on-brand: hsl(150 100% 100%);
+  --root-bg: #f7f8f1;
+  --form-active-color: var(--brand);
+  --control-checked-stroke: var(--brand);
+  --control-checked-bg: var(--brand);
+  --control-checked-color: var(--on-brand);
+  --btn-radius: 5rem;
+  scrollbar-color: var(--scrollthumb-color, var(--brand))
+    var(--scrolltrack-color, transparent);
+  accent-color: var(--brand);
+  caret-color: var(--brand);
+}
+
+::marker {
+  color: var(--brand);
+  font-weight: bolder;
+}
+
+::selection {
+  text-shadow: none;
+  background: var(--brand);
+  color: var(--on-brand);
+}
+
+:where(:focus-visible) {
+  outline-color: var(--brand);
+}
+
+:where(blockquote, hr) {
+  border-color: var(--brand);
+}
+
+:where(tbody tr:nth-child(even) :is(th, td)) {
+  background: color-mix(in oklab, var(--root-bg) 94%, currentcolor);
+}
+
+::-webkit-calendar-picker-indicator {
+  outline-color: var(--brand);
+}
+
+:where(select option:checked) {
+  background: var(--brand);
+  color: var(--on-brand);
+}
+
+:where(.btn.-primary, [type="submit"], form button:not([type])),
+:where(input[type="file"])::file-selector-button {
+  --btn-stroke: transparent;
+  --btn-bg: var(--brand);
+  --btn-color: var(--on-brand);
+  --btn-hover-bg: color-mix(in oklab, var(--brand) 80%, black);
+  --btn-active-bg: color-mix(in oklab, var(--brand) 72%, black);
+}
+
+:where(.btn, button, [type="button"], [type="submit"], [type="reset"]):has(
+    :where(svg:only-child, img:only-child)
+  ) {
+  --btn-px: var(--btn-py, 0.375rem);
+}
