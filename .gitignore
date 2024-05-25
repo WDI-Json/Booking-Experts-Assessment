@@ -29,8 +29,7 @@
 !/tmp/storage/
 !/tmp/storage/.keep
 
-# TODO: find out why public/assets was inside ignore?
-#/public/assets
+/public/assets
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
