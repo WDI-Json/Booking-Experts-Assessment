@@ -28,7 +28,7 @@ class InvoicePdf < Prawn::Document
     last_measured_y = cursor
     move_cursor_to bounds.height
 
-    image logopath, width: 128, position: :right
+    image logopath, width: 64, position: :right
 
     move_cursor_to last_measured_y
 
