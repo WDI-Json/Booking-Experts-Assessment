@@ -1,6 +1,6 @@
 %header.page-header
   .container.flex.gap-4.items-center.justify-between
-    = link_to "Bookify", root_path
+    = link_to image_tag('bookify-logo.png', { width: 64, height: 64, alt: "Bookify" }), root_path
     %nav.flex.flex-wrap.gap-1
       - if user_signed_in?
         = link_to 'Account', edit_user_registration_path, class: "btn border-none"
