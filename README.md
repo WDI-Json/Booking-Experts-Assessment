@@ -7,9 +7,9 @@ Bookify is a web application that allows users to book accommodation at one of o
 [x] Auth with Devise
 [x] Invoice generation with Prawn
 [x] Basic styling with Tailwind
-[ ] Adding I18n gem with implementation
-[ ] Use OpenAi Gem to suggest activities based on location and time booked
+[x] Adding I18n gem with implementation (NL and EN)
 [ ] Background jobs with Sidekiq
+[ ] Use OpenAi Gem to suggest activities based on location and time booked
 [ ] Github actions for Build and test
 [ ] Kamal deploy to VM Digital Ocean
 [ ] Automate deployment with Github Actions
