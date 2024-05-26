@@ -1,21 +1,21 @@
 - if user_signed_in?
   %body
-  .py-6.md:py-12.bg-primary.text-on-primary
-    .container
-      %hgroup
-        %h1.break-words Bookify
-        %p Simplify your booking process through our platform
+    .py-6.md:py-12.bg-primary.text-on-primary
+      .container
+        %hgroup
+          %h1.break-words= t('application.name')
+          %p= t('booking.description')
 
-      %p.text-lg Welcome #{current_user.email}!
-      %a= link_to "Book Now", bookings_path
+        %p.text-lg= t('booking.welcome-message', email: current_user.email)
+        %a= link_to t('booking.book-now'), bookings_path
 
-  .ai-tool
-    .container
-      %h2 Discover Exciting Activities with Our AI Tool
-      %p Let our AI suggest activities for you to enjoy once booked!
-      %a.btn.-primary{href: "#"} Try Our AI Tool
+    .ai-tool
+      .container
+        %h2= t('ai-tool.header')
+        %p= t('ai-tool.description')
+        %a.btn.-primary{href: "#"}= t('ai-tool.try-ai-tool')
 
 - else
   .container.my-8
-    %h1 Welcome!
-    %h2 Sign up or Login with an existing account
+    %h1= t('auth.welcome')
+    %h2= t('auth.sign-up-or-login')

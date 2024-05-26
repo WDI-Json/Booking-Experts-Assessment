@@ -1,15 +1,13 @@
-.container
-    %h1 Contact Us
-    %p If you have any questions or need assistance, please contact us at:
-    %h2.text-lg.mb-1 Address:
-    %Address.mt-1
-        Bookify GmbH
-        %br
-        Schildergasse 123
-        %br
-        10115 Berlin
-        %br
-        Germany
-    %p Email: bookify@example.com
-    %p Phone: +49 1234 56789
-
+%h1= t('contact.header')
+%p= t('contact.introduction')
+%h2.text-lg.mb-1= t('contact.address-header')
+%Address.mt-1
+  = t('contact.company-name')
+  %br
+  = t('contact.address')
+  %br
+  = t('contact.postal-code')
+  %br
+  = t('contact.country')
+%p= t('contact.email')
+%p= t('contact.phone')

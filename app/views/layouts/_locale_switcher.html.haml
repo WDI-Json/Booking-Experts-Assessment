@@ -1,0 +1,7 @@
+- available_locales = I18n.available_locales.map(&:to_s)
+- current_locale = I18n.locale.to_s
+- other_locales = available_locales - [current_locale]
+
+%div.locale-switcher
+  - other_locales.each do |locale|
+    = link_to locale.upcase, switch_locale_path(locale), class: 'btn btn-primary'

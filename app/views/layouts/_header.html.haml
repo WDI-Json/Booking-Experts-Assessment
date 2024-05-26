@@ -7,7 +7,8 @@
         = link_to 'My Bookings', bookings_path, class: "btn border-none"
         = link_to 'Partners', partners_path, class: "btn border-none"
         = link_to "Logout", destroy_user_session_path, method: :delete, class: "btn border-none"
+        
       - else
         = link_to "Login", new_user_session_path, class: "btn border-none"
         = link_to "Sign Up", new_user_registration_path, class: "btn border-none"
-
+    = render 'layouts/locale_switcher'

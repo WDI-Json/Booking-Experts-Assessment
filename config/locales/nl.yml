@@ -1,31 +1,39 @@
-# Files in the config/locales directory are used for internationalization and
-# are automatically loaded by Rails. If you want to use locales other than
-# English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t "hello"
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t("hello") %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more about the API, please read the Rails Internationalization guide
-# at https://guides.rubyonrails.org/i18n.html.
-#
-# Be aware that YAML interprets the following case-insensitive strings as
-# booleans: `true`, `false`, `on`, `off`, `yes`, `no`. Therefore, these strings
-# must be quoted to be interpreted as strings. For example:
-#
-#     en:
-#       "yes": yup
-#       enabled: "ON"
-
 nl:
-  hello: "Hallo wereld"
+    application:
+        name: "Bookify"
+        about: "Over ons"
+        copyright: "Alle rechten voorbehouden."
+    booking:
+        description: "Vereenvoudig uw boekingsproces via ons platform"
+        welcome-message: "Welkom %{email}!"
+        book-now: "Boek nu!"
+    ai-tool:
+        header: "Ontdek Spannende Activiteiten met Onze AI-tool"
+        description: "Laat onze AI activiteiten voorstellen die u kunt genieten zodra u geboekt heeft!"
+        try-ai-tool: "Probeer Onze AI-tool"
+    auth:
+        welcome: "Welkom!"
+        sign-up-or-login: "Registreer u of Log in met een bestaand account"
+    about:
+        title: "Over Bookify"
+        introduction: >
+            Bookify is een dienst die het gemakkelijker maakt om uw verblijf tijdens de vakantie te boeken.
+            Wij geloven dat het vinden van de perfecte vakantiebestemming geen gedoe zou moeten zijn. Met ons
+            platform kunt u eenvoudig accommodatie voor uw reis vinden en boeken.
+        technology-and-tools: >
+            Bookify gebruikt de nieuwste technologieën en tools om een naadloze ervaring te bieden.
+            Onze AI-tool helpt u spannende activiteiten te ontdekken zodra u geboekt heeft.
+        inclusivity: >
+            Of u nu een soloreiziger bent of met uw gezin reist, Bookify heeft alles wat u nodig heeft.
+        cta: >
+            Waar wacht u nog op? Sluit u vandaag nog aan bij de Bookify-familie en begin aan uw volgende avontuur!
+    contact:
+        header: "Contact"
+        introduction: "Als u vragen heeft of hulp nodig heeft, neem dan contact met ons op via:"
+        address-header: "Adres:"
+        company-name: Bookify B.V.
+        address: Regelandisstraat 17
+        postal-code: 8022BN Zwolle
+        country: Nederland
+        email: "Email: bookify@example.com"
+        phone: "Telefoon: +31 6 1592 2471"
