@@ -294,7 +294,6 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  actionview
   bootsnap
   capybara
   debug

@@ -23,7 +23,6 @@ class InvoicesController < ApplicationController
   private
 
   def invoice_params
-    # Define strong parameters here if needed
     params.require(:invoice).permit(:invoice_number, :amount, :due_date)
   end
 end
