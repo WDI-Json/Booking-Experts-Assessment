@@ -74,3 +74,4 @@ gem "ruby-openai"
 gem 'prawn'
 gem "prawn-table", "~> 0.2.2"
 gem 'rails-i18n'
+gem 'sidekiq'
