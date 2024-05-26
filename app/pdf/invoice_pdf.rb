@@ -1,7 +1,4 @@
 class InvoicePdf < Prawn::Document
-  # def initialize
-  #   super()
-  # end
 
   def generate_invoice(booking)
     logopath = 'app/assets/images/bookify-logo.png'
@@ -147,5 +144,3 @@ class InvoicePdf < Prawn::Document
   end
 end
 
-# To generate the PDF
-InvoicePdf.new.render_file "invoice.pdf"

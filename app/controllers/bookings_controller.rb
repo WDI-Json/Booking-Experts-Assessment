@@ -56,25 +56,21 @@ class BookingsController < ApplicationController
 
   def get_invoice
     @booking = Booking.find(params[:booking_id])
-    invoice_name = "#{@booking.created_at.strftime("%Y%m")}%03d" %@booking.id + ".pdf"
+    
+    CreatePdfJob.perform_async(@booking.id)
 
-    InvoicePdf.generate(invoice_name) do |pdf|
-      pdf.generate_invoice(@booking)
-      filename = File.join(Rails.root, "app/invoice", invoice_name)
-      pdf.render_file filename
-      send_data pdf.render, filename: filename, type: 'application/pdf', disposition: 'inline'
+    # TODO: make it work that the user receives notification that the invoice is ready. Currently 2 inv
+    respond_to do |format|
+      format.html { redirect_to booking_path(@booking), notice: 'Invoice PDF is being generated. You will be notified when it is ready.' }
+      format.json { render json: { message: 'Invoice PDF is being generated. You will be notified when it is ready.' }, status: :accepted }
     end
-
-
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_booking
       @booking = current_user.bookings.find(params[:id])
     end
-
-    # Only allow a list of trusted parameters through.
+  
     def booking_params
       params.require(:booking).permit(:date_of_stay, :amount_of_days, :partner_id)
     end

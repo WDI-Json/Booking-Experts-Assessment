@@ -8,11 +8,14 @@ Rails.application.routes.draw do
 
   # Authentication
   devise_for :users
+  
+  # Background jobs
+  resources :jobs, only: [:create]
   # Routes
   get "up" => "rails/health#show", as: :rails_health_check
-
   get '/about', to: 'static_pages#about'
   get '/contact', to: 'static_pages#contact'
   get 'switch_locale/:locale', to: 'application#switch_locale', as: :switch_locale
+  
   root "home#index"
 end
