@@ -17,7 +17,7 @@ Bookify is a web application that allows users to book accommodation at one of o
 
 ## Issues
 [ ] Sign-out not working correctly
-[ ] Tailwind installed through NPM instead of import maps 
+[x] Tailwind installed through NPM instead of import maps 
 [ ] Background jobs works like expected, but no pop-up or notification working for pdf download.
 
 ## Current Dependencies
