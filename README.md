@@ -8,7 +8,7 @@ Bookify is a web application that allows users to book accommodation at one of o
 [x] Invoice generation with Prawn
 [x] Basic styling with Tailwind
 [x] Adding I18n gem with implementation (NL and EN)
-[ ] Background jobs with Sidekiq
+[x] Background jobs with Sidekiq
 [ ] Use OpenAi Gem to suggest activities based on location and time booked
 [ ] Github actions for Build and test
 [ ] Kamal deploy to VM Digital Ocean
@@ -18,6 +18,7 @@ Bookify is a web application that allows users to book accommodation at one of o
 ## Issues
 [ ] Sign-out not working correctly
 [ ] Tailwind installed through NPM instead of import maps 
+[ ] Background jobs works like expected, but no pop-up or notification working for pdf download.
 
 ## Current Dependencies
 - Devise
