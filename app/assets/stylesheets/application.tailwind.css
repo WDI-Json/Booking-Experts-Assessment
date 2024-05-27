@@ -1,0 +1,6 @@
+@import url("src/@fylgja/base") layer(base);
+@import url("src/theme.css") layer(base);
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

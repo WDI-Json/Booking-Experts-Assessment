@@ -59,3 +59,15 @@
   ) {
   --btn-px: var(--btn-py, 0.375rem);
 }
+
+/*
+ `:is()` combines classes into one, same with `:where()` (https://developer.mozilla.org/en-US/docs/Web/CSS/:is)
+ `:where()` has no specificity (https://developer.mozilla.org/en-US/docs/Web/CSS/:where)
+*/
+:where(form .field, :is(form, fieldset) label:has(input, select, textarea)) {
+    margin-block: 1rem 0.5rem;
+}
+
+:where(h1) {
+    @apply mt-0;
+}

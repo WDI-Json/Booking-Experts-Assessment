@@ -5,19 +5,18 @@
       %ul
         - booking.errors.full_messages.each do |message|
           %li= message
-  .space-y-4
-    .field
-      = form.label :date_of_stay
-      = form.date_field :date_of_stay
+  .field
+    = form.label :date_of_stay
+    = form.date_field :date_of_stay
 
-    .field
-      = form.label :amount_of_days
-      = form.number_field :amount_of_days
+  .field
+    = form.label :amount_of_days
+    = form.number_field :amount_of_days
 
-    .field
-      = form.label :partner_id, "Partner"
-      = form.collection_select :partner_id, @partners, :id, :name
+  .field
+    = form.label :partner_id, "Partner"
+    = form.collection_select :partner_id, @partners, :id, :name
 
-    .flex.items-center.gap-4
-      = link_to 'Back', bookings_path
-      = form.submit
+  .flex.items-center.gap-4.mt-6
+    = link_to 'Back', bookings_path
+    = form.submit

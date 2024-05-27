@@ -37,3 +37,5 @@
 # build files
 /node_modules
 /app/assets/stylesheets/main.css
+/app/assets/builds/*
+!/app/assets/builds/.keep
