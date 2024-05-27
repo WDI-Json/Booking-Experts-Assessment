@@ -16,7 +16,7 @@ Bookify is a web application that allows users to book accommodation at one of o
 [ ] Capybara tests
 
 ## Issues
-[ ] Sign-out not working correctly
+[x] Sign-out not working correctly
 [x] Tailwind installed through NPM instead of import maps 
 [ ] Background jobs works like expected, but no pop-up or notification working for pdf download.
 
